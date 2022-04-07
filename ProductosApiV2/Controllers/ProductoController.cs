@@ -65,14 +65,26 @@ namespace ProductosApiV2.Controllers
         }
         [HttpPost]
         [ActionName("ObtenerProductosConsulta")]
-         public IHttpActionResult ObtenerProductosConsulta(ConsultaDto consultaDto)
+        public IHttpActionResult ObtenerProductosConsulta(ConsultaDto consultaDto)
         {
-               var listaProducto= _productoServicioAplicacion.ObtenerProductosConsulta(consultaDto);
+            var listaProducto = _productoServicioAplicacion.ObtenerProductosConsulta(consultaDto);
             if (listaProducto.Any())
                 return Ok(listaProducto);
             else
                 return NotFound();
 
+        }
+
+        [HttpDelete]
+        [ActionName("EliminarProducto")]
+        public IHttpActionResult EliminarProducto(int id)
+        {
+            if (_productoServicioAplicacion.EliminarProducto(id))
+            {
+                return Ok(id);
+            }
+            else
+                return BadRequest();
         }
 
 

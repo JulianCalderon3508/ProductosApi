@@ -116,5 +116,25 @@ namespace ServiciosAplicacion.Implementaciones
             }
         }
 
+        public bool EliminarProducto(int id)
+        {
+            try
+            {
+                var producto = db.Productos.Where(x => x.Id_Producto == id).FirstOrDefault();
+                if (producto != null)
+                {
+                    db.Productos.Remove(producto);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogException(ex);
+                return false;
+            }
+        }
+
+
     }
 }

@@ -16,6 +16,7 @@ namespace ServiciosAplicacion.Definiciones
         bool ActualizarProducto(Producto producto);
 
         List<Producto> ObtenerProductosConsulta(ConsultaDto consultaDto);
+        bool EliminarProducto(int id);
 
 
 
